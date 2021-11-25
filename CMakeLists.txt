@@ -23,13 +23,15 @@ endif()
 #     set(EXECUTABLE_OUTPUT_PATH ${EXECUTABLE_OUTPUT_PATH}/Release)
 # endif()
 
-INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/include/use_dll ${PROJECT_SOURCE_DIR}/include/use_engine)
+# find_package(Matlab REQUIRED)
+
+INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/include/use_dll ${PROJECT_SOURCE_DIR}/include/use_engine ${PROJECT_SOURCE_DIR}/include/engine_demo)
 # 添加库文件路径
-LINK_DIRECTORIES(${PROJECT_SOURCE_DIR}/lib/use_dll ${PROJECT_SOURCE_DIR}/lib/use_engine)
+LINK_DIRECTORIES(${PROJECT_SOURCE_DIR}/lib/use_dll ${PROJECT_SOURCE_DIR}/lib/use_engine ${PROJECT_SOURCE_DIR}/lib/engine_demo)
 
 aux_source_directory(${PROJECT_SOURCE_DIR}/src DIRSRCS)
 
 # 编译源码生成目标
 add_executable(TestDemo ${DIRSRCS})
 
-TARGET_LINK_LIBRARIES(TestDemo PUBLIC LicensePlateLocation mclmcrrt libMatlabDataArray libMatlabEngine)
+TARGET_LINK_LIBRARIES(TestDemo PUBLIC LicensePlateLocation mclmcrrt libMatlabDataArray libMatlabEngine libeng libmex libmx)
